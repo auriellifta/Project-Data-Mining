@@ -1,4 +1,4 @@
-# NALARA — Nalar & Arah Karier
+# NALARA
 
 > **Decision Support System (DSS) Rekomendasi Program Studi Perguruan Tinggi bagi Siswa SMK Menggunakan Pendekatan Two-Stage Hybrid Machine Learning (K-Means Clustering 2D & Random Forest Classifier)**
 

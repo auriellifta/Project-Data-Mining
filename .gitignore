@@ -1,0 +1,55 @@
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+.pytest_cache/
+
+# Matplotlib & Font Cache
+.mpl_cache/
+.matplotlib/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# Environment Variables & IDE
+.env
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary & Lock Files
+~$*.xlsx
+~$*.xls
+*.zip
+*.log
+*.tmp
+
+# ==============================================================================
+# DATA PRIVASI SISWA (PII) - DILARANG DIUNGGAH KE GITHUB PUBLIK
+# Sesuai Panduan Laporan Akhir & Perlindungan Privasi Siswa SMKN 1 Bintan Timur
+# ==============================================================================
+Leger Semester Genap Tahun 2026/
+*Leger*
+*V2 (Jawaban)*
+dataset_minat_bersih.csv
+dataset_rapor_bersih.csv
+pipeline_177_data_mining/temp_kuesioner_clean_177.csv
+pipeline_177_data_mining/temp_rapor_selected_177.csv
+
+# Arsip Pengumpulan Form Dosen (Dikumpulkan via Google Form)
+*.7z
+Mentah_*/
+SiapMining_*/
+
+# Dokumen Laporan & Proposal Internal Kampus (Dikumpulkan via Google Form)
+*.docx
+*.pdf
+
+# Folder Draft / Prototype Eksperimen Lama
+new/
+pipeline_lomba_impact_82/
+SYSTEM_INSTRUCTIONS.md

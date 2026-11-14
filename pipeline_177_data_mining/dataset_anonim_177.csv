@@ -1,0 +1,178 @@
+ID_Siswa,Jurusan,Matematika,Bahasa_Indonesia,Bahasa_Inggris,Produktif,Rata_Rapor,Realistic,Investigative,Artistic,Social,Enterprising,Conventional,Skor_Minat_Kejuruan,Target_Rumpun_Kuliah
+Siswa_001,Perhotelan (PH),77.0,90.0,85.0,77.5,82.375,27.0,21.0,18.0,28.0,29.0,22.0,28.0,Pariwisata & Hospitality
+Siswa_002,Perhotelan (PH),79.0,94.0,82.0,83.5,84.625,25.0,16.0,16.0,30.0,28.0,23.0,30.0,Pariwisata & Hospitality
+Siswa_003,Tata Busana (TB),85.0,83.0,85.0,79.5,83.125,25.0,21.0,26.0,23.0,32.0,20.0,26.0,"Seni, Desain & Industri Kreatif"
+Siswa_004,Desain Komunikasi Visual (DKV),85.0,80.0,82.0,85.5,83.125,27.0,27.0,24.0,22.0,18.0,17.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_005,Rekayasa Perangkat Lunak (RPL),84.0,80.0,86.0,82.0,83.0,24.0,28.0,20.0,18.0,22.0,24.0,28.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_006,Akuntansi (AKT),87.0,93.0,90.0,91.5,90.375,15.0,27.0,19.0,25.0,23.0,28.0,28.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_007,Tata Busana (TB),86.0,86.0,92.0,88.0,88.0,31.0,17.0,24.0,18.0,27.0,24.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_008,Akuntansi (AKT),83.0,93.0,88.0,87.5,87.875,18.0,28.0,25.0,17.0,25.0,28.0,28.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_009,Akuntansi (AKT),81.0,85.0,80.0,87.0,83.25,17.0,25.0,25.0,19.0,27.0,30.0,30.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_010,Perhotelan (PH),77.0,91.0,82.0,84.0,83.5,27.0,15.0,23.0,29.0,31.0,21.0,29.0,Pariwisata & Hospitality
+Siswa_011,Rekayasa Perangkat Lunak (RPL),83.0,88.0,84.0,82.0,84.25,26.0,27.0,22.0,20.0,22.0,30.0,27.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_012,Desain Komunikasi Visual (DKV),85.0,80.0,82.0,85.5,83.125,27.0,27.0,31.0,22.0,26.0,20.0,31.0,"Seni, Desain & Industri Kreatif"
+Siswa_013,Desain Komunikasi Visual (DKV),87.0,83.0,85.0,85.5,85.125,27.0,25.0,25.0,23.0,25.0,19.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_014,Perhotelan (PH),78.0,87.0,85.0,84.0,83.5,26.0,20.0,24.0,25.0,29.0,23.0,25.0,Pariwisata & Hospitality
+Siswa_015,Akuntansi (AKT),85.0,86.0,80.0,86.5,84.375,17.0,27.0,23.0,20.0,25.0,27.0,27.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_016,Desain Komunikasi Visual (DKV),83.0,80.0,82.0,83.0,82.0,29.0,27.0,24.0,21.0,23.0,17.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_017,Desain Komunikasi Visual (DKV),88.0,80.0,85.0,87.0,85.0,22.0,27.0,28.0,20.0,24.0,17.0,28.0,"Seni, Desain & Industri Kreatif"
+Siswa_018,Rekayasa Perangkat Lunak (RPL),88.0,92.0,94.0,90.0,91.0,25.0,28.0,20.0,16.0,23.0,27.0,28.0,Sains & Teknologi Informasi
+Siswa_019,Akuntansi (AKT),83.0,88.0,84.0,87.0,85.5,22.0,28.0,22.0,25.0,31.0,26.0,26.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_020,Akuntansi (AKT),83.0,89.0,87.0,88.5,86.875,14.0,28.0,20.0,22.0,26.0,25.0,25.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_021,Perhotelan (PH),77.0,93.0,82.0,87.0,84.75,26.0,21.0,23.0,27.0,30.0,23.0,27.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_022,Perhotelan (PH),78.0,85.0,85.0,81.5,82.375,29.0,20.0,18.0,22.0,30.0,21.0,22.0,"Sosial, Humaniora & Pendidikan"
+Siswa_023,Rekayasa Perangkat Lunak (RPL),85.0,92.0,90.0,89.0,89.0,29.0,23.0,17.0,16.0,21.0,24.0,23.0,Sains & Teknologi Informasi
+Siswa_024,Akuntansi (AKT),82.0,86.0,85.0,88.5,85.375,16.0,28.0,16.0,22.0,30.0,28.0,28.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_025,Perhotelan (PH),77.0,90.0,85.0,88.5,85.125,27.0,17.0,21.0,26.0,30.0,22.0,26.0,Pariwisata & Hospitality
+Siswa_026,Desain Komunikasi Visual (DKV),85.0,80.0,82.0,82.0,82.25,26.0,31.0,24.0,24.0,22.0,17.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_027,Rekayasa Perangkat Lunak (RPL),87.0,86.0,85.0,80.0,84.5,25.0,27.0,23.0,16.0,21.0,30.0,27.0,Sains & Teknologi Informasi
+Siswa_028,Desain Komunikasi Visual (DKV),85.0,85.0,82.0,85.5,84.375,26.0,27.0,28.0,19.0,21.0,19.0,28.0,"Seni, Desain & Industri Kreatif"
+Siswa_029,Perhotelan (PH),78.0,85.0,80.0,81.5,81.125,26.0,19.0,25.0,28.0,27.0,19.0,28.0,Pariwisata & Hospitality
+Siswa_030,Akuntansi (AKT),85.0,90.0,81.0,88.5,86.125,18.0,30.0,22.0,18.0,23.0,26.0,26.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_031,Akuntansi (AKT),81.0,82.0,79.0,89.5,82.875,21.0,33.0,25.0,25.0,22.0,28.0,28.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_032,Rekayasa Perangkat Lunak (RPL),86.0,90.0,89.0,77.0,85.5,26.0,24.0,19.0,19.0,19.0,25.0,24.0,Sains & Teknologi Informasi
+Siswa_033,Tata Busana (TB),90.0,96.0,92.0,85.0,90.75,25.0,18.0,24.0,18.0,26.0,22.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_034,Rekayasa Perangkat Lunak (RPL),84.0,88.0,94.0,83.0,87.25,23.0,27.0,23.0,14.0,20.0,22.0,27.0,Sains & Teknologi Informasi
+Siswa_035,Desain Komunikasi Visual (DKV),85.0,91.0,82.0,87.5,86.375,25.0,26.0,25.0,23.0,12.0,22.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_036,Perhotelan (PH),77.0,80.0,82.0,81.5,80.125,28.0,21.0,20.0,25.0,26.0,23.0,25.0,Pariwisata & Hospitality
+Siswa_037,Desain Komunikasi Visual (DKV),87.0,87.0,85.0,89.0,87.0,25.0,25.0,25.0,21.0,23.0,20.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_038,Akuntansi (AKT),81.0,86.0,79.0,85.5,82.875,16.0,28.0,22.0,21.0,26.0,29.0,29.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_039,Rekayasa Perangkat Lunak (RPL),85.0,80.0,92.0,88.0,86.25,27.0,26.0,17.0,23.0,21.0,26.0,26.0,Sains & Teknologi Informasi
+Siswa_040,Akuntansi (AKT),82.0,86.0,80.0,85.5,83.375,21.0,24.0,25.0,21.0,28.0,26.0,26.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_041,Perhotelan (PH),79.0,90.0,85.0,90.5,86.125,26.0,21.0,24.0,25.0,18.0,20.0,25.0,Pariwisata & Hospitality
+Siswa_042,Perhotelan (PH),77.0,88.0,85.0,82.5,83.125,26.0,24.0,22.0,24.0,29.0,23.0,24.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_043,Rekayasa Perangkat Lunak (RPL),85.0,89.0,88.0,85.0,86.75,25.0,28.0,21.0,21.0,16.0,24.0,28.0,Sains & Teknologi Informasi
+Siswa_044,Perhotelan (PH),78.0,90.0,85.0,84.0,84.25,32.0,15.0,22.0,30.0,24.0,20.0,30.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_045,Desain Komunikasi Visual (DKV),86.0,85.0,85.0,86.0,85.5,28.0,27.0,23.0,20.0,21.0,20.0,23.0,Sains & Teknologi Informasi
+Siswa_046,Rekayasa Perangkat Lunak (RPL),84.0,86.0,84.0,78.0,83.0,25.0,27.0,24.0,17.0,21.0,25.0,27.0,Sains & Teknologi Informasi
+Siswa_047,Tata Busana (TB),85.0,86.0,91.0,86.0,87.0,28.0,18.0,27.0,19.0,26.0,23.0,27.0,"Seni, Desain & Industri Kreatif"
+Siswa_048,Desain Komunikasi Visual (DKV),85.0,80.0,82.0,85.0,83.0,27.0,31.0,25.0,23.0,24.0,21.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_049,Desain Komunikasi Visual (DKV),90.0,82.0,85.0,89.0,86.5,24.0,25.0,22.0,28.0,25.0,15.0,22.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_050,Perhotelan (PH),78.0,87.0,85.0,85.0,83.75,31.0,18.0,20.0,29.0,31.0,22.0,29.0,Pariwisata & Hospitality
+Siswa_051,Rekayasa Perangkat Lunak (RPL),85.0,88.0,94.0,83.0,87.5,27.0,25.0,26.0,14.0,19.0,31.0,25.0,Sains & Teknologi Informasi
+Siswa_052,Akuntansi (AKT),81.0,86.0,88.0,88.5,85.875,18.0,27.0,19.0,19.0,22.0,25.0,25.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_053,Rekayasa Perangkat Lunak (RPL),86.0,82.0,89.0,95.0,88.0,22.0,28.0,19.0,17.0,24.0,26.0,28.0,Sains & Teknologi Informasi
+Siswa_054,Perhotelan (PH),78.0,88.0,84.0,85.0,83.75,26.0,18.0,23.0,31.0,28.0,21.0,31.0,Pariwisata & Hospitality
+Siswa_055,Tata Busana (TB),92.0,86.0,92.0,89.5,89.875,24.0,22.0,20.0,21.0,23.0,16.0,20.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_056,Perhotelan (PH),77.0,80.0,82.0,84.0,80.75,26.0,18.0,18.0,29.0,24.0,24.0,29.0,"Sosial, Humaniora & Pendidikan"
+Siswa_057,Rekayasa Perangkat Lunak (RPL),85.0,88.0,87.0,83.0,85.75,29.0,25.0,26.0,23.0,20.0,31.0,25.0,Sains & Teknologi Informasi
+Siswa_058,Rekayasa Perangkat Lunak (RPL),85.0,90.0,90.0,95.0,90.0,26.0,25.0,19.0,20.0,22.0,27.0,25.0,Sains & Teknologi Informasi
+Siswa_059,Rekayasa Perangkat Lunak (RPL),85.0,88.0,93.0,92.0,89.5,25.0,26.0,20.0,17.0,23.0,31.0,26.0,Sains & Teknologi Informasi
+Siswa_060,Rekayasa Perangkat Lunak (RPL),84.0,80.0,85.0,80.0,82.25,25.0,27.0,25.0,21.0,25.0,27.0,27.0,Sains & Teknologi Informasi
+Siswa_061,Rekayasa Perangkat Lunak (RPL),84.0,88.0,84.0,88.0,86.0,28.0,27.0,23.0,20.0,18.0,24.0,27.0,Sains & Teknologi Informasi
+Siswa_062,Perhotelan (PH),78.0,85.0,80.0,82.5,81.375,30.0,16.0,22.0,28.0,25.0,21.0,28.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_063,Rekayasa Perangkat Lunak (RPL),92.0,90.0,95.0,92.0,92.25,29.0,32.0,24.0,23.0,24.0,27.0,32.0,Sains & Teknologi Informasi
+Siswa_064,Desain Komunikasi Visual (DKV),90.0,81.0,85.0,88.5,86.125,29.0,26.0,26.0,20.0,19.0,17.0,26.0,"Seni, Desain & Industri Kreatif"
+Siswa_065,Perhotelan (PH),77.0,90.0,82.0,84.0,83.25,27.0,21.0,19.0,27.0,26.0,23.0,27.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_066,Akuntansi (AKT),82.0,85.0,84.0,86.0,84.25,18.0,23.0,21.0,20.0,29.0,23.0,23.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_067,Tata Busana (TB),86.0,86.0,85.0,82.5,84.875,27.0,22.0,25.0,22.0,25.0,23.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_068,Tata Busana (TB),85.0,85.0,85.0,81.5,84.125,28.0,19.0,25.0,20.0,30.0,24.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_069,Perhotelan (PH),78.0,86.0,80.0,88.0,83.0,31.0,20.0,23.0,26.0,23.0,22.0,26.0,Pariwisata & Hospitality
+Siswa_070,Akuntansi (AKT),82.0,89.0,84.0,89.5,86.125,18.0,24.0,20.0,21.0,25.0,30.0,30.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_071,Akuntansi (AKT),85.0,88.0,80.0,86.5,84.875,19.0,29.0,25.0,18.0,25.0,29.0,29.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_072,Tata Busana (TB),89.0,85.0,88.0,81.0,85.75,19.0,15.0,26.0,24.0,29.0,20.0,26.0,"Seni, Desain & Industri Kreatif"
+Siswa_073,Perhotelan (PH),80.0,90.0,85.0,89.5,86.125,30.0,17.0,22.0,23.0,26.0,21.0,23.0,Pariwisata & Hospitality
+Siswa_074,Akuntansi (AKT),87.0,92.0,87.0,91.5,89.375,17.0,30.0,18.0,22.0,25.0,27.0,27.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_075,Desain Komunikasi Visual (DKV),86.0,80.0,85.0,86.0,84.25,27.0,24.0,23.0,18.0,18.0,13.0,23.0,Sains & Teknologi Informasi
+Siswa_076,Desain Komunikasi Visual (DKV),84.0,81.0,82.0,85.5,83.125,25.0,25.0,30.0,22.0,24.0,19.0,30.0,"Seni, Desain & Industri Kreatif"
+Siswa_077,Akuntansi (AKT),85.0,93.0,89.0,91.0,89.5,19.0,30.0,19.0,22.0,25.0,30.0,30.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_078,Perhotelan (PH),77.0,90.0,82.0,89.0,84.5,27.0,20.0,19.0,26.0,27.0,19.0,26.0,Pariwisata & Hospitality
+Siswa_079,Akuntansi (AKT),85.0,93.0,88.0,87.0,88.25,17.0,25.0,18.0,18.0,22.0,25.0,25.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_080,Akuntansi (AKT),85.0,85.0,85.0,87.5,85.625,17.0,29.0,22.0,17.0,25.0,26.0,26.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_081,Desain Komunikasi Visual (DKV),85.0,80.0,82.0,85.5,83.125,27.0,29.0,23.0,19.0,17.0,18.0,23.0,"Seni, Desain & Industri Kreatif"
+Siswa_082,Desain Komunikasi Visual (DKV),85.0,80.0,87.0,85.5,84.375,24.0,25.0,24.0,19.0,18.0,19.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_083,Tata Busana (TB),88.0,86.0,89.0,87.5,87.625,31.0,18.0,26.0,18.0,21.0,25.0,26.0,"Seni, Desain & Industri Kreatif"
+Siswa_084,Tata Busana (TB),89.0,96.0,92.0,85.5,90.625,26.0,15.0,25.0,25.0,27.0,25.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_085,Akuntansi (AKT),87.0,93.0,84.0,89.5,88.375,18.0,27.0,18.0,23.0,27.0,25.0,25.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_086,Desain Komunikasi Visual (DKV),90.0,87.0,85.0,86.0,87.0,25.0,30.0,27.0,21.0,18.0,20.0,27.0,"Seni, Desain & Industri Kreatif"
+Siswa_087,Rekayasa Perangkat Lunak (RPL),85.0,92.0,95.0,88.0,90.0,26.0,28.0,24.0,15.0,19.0,30.0,28.0,Sains & Teknologi Informasi
+Siswa_088,Perhotelan (PH),78.0,88.0,85.0,88.0,84.75,22.0,19.0,20.0,30.0,26.0,23.0,30.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_089,Rekayasa Perangkat Lunak (RPL),84.0,88.0,86.0,92.0,87.5,28.0,26.0,24.0,18.0,22.0,29.0,26.0,Sains & Teknologi Informasi
+Siswa_090,Rekayasa Perangkat Lunak (RPL),86.0,85.0,88.0,78.0,84.25,25.0,27.0,19.0,18.0,19.0,25.0,27.0,Sains & Teknologi Informasi
+Siswa_091,Perhotelan (PH),85.0,90.0,95.0,88.5,89.625,31.0,13.0,19.0,28.0,25.0,20.0,28.0,Pariwisata & Hospitality
+Siswa_092,Desain Komunikasi Visual (DKV),92.0,89.0,87.0,90.0,89.5,23.0,28.0,26.0,22.0,23.0,17.0,26.0,"Seni, Desain & Industri Kreatif"
+Siswa_093,Rekayasa Perangkat Lunak (RPL),86.0,92.0,87.0,87.0,88.0,25.0,28.0,20.0,21.0,18.0,26.0,28.0,Sains & Teknologi Informasi
+Siswa_094,Desain Komunikasi Visual (DKV),83.0,80.0,82.0,83.0,82.0,27.0,27.0,24.0,23.0,23.0,18.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_095,Desain Komunikasi Visual (DKV),85.0,81.0,85.0,87.5,84.625,27.0,25.0,24.0,20.0,24.0,22.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_096,Akuntansi (AKT),80.0,91.0,85.0,87.0,85.75,18.0,24.0,20.0,24.0,24.0,30.0,30.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_097,Akuntansi (AKT),87.0,92.0,89.0,89.0,89.25,21.0,28.0,23.0,21.0,29.0,29.0,29.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_098,Rekayasa Perangkat Lunak (RPL),87.0,85.0,89.0,82.0,85.75,28.0,22.0,24.0,19.0,19.0,28.0,22.0,Sains & Teknologi Informasi
+Siswa_099,Perhotelan (PH),77.0,92.0,85.0,82.0,84.0,26.0,18.0,24.0,27.0,25.0,18.0,27.0,Pariwisata & Hospitality
+Siswa_100,Akuntansi (AKT),78.0,88.0,79.0,92.0,84.25,17.0,28.0,19.0,27.0,27.0,26.0,26.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_101,Desain Komunikasi Visual (DKV),77.0,83.0,78.0,79.5,79.375,24.0,21.0,24.0,20.0,19.0,13.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_102,Rekayasa Perangkat Lunak (RPL),88.0,89.0,88.0,91.0,89.0,25.0,32.0,23.0,18.0,23.0,29.0,32.0,Sains & Teknologi Informasi
+Siswa_103,Rekayasa Perangkat Lunak (RPL),84.0,84.0,88.0,86.0,85.5,27.0,22.0,19.0,18.0,24.0,31.0,22.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_104,Akuntansi (AKT),77.0,97.0,84.0,89.5,86.875,25.0,29.0,25.0,18.0,24.0,29.0,29.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_105,Desain Komunikasi Visual (DKV),79.0,90.0,88.0,83.5,85.125,29.0,28.0,27.0,22.0,22.0,17.0,27.0,"Seni, Desain & Industri Kreatif"
+Siswa_106,Tata Busana (TB),78.0,78.0,80.0,83.5,79.875,28.0,17.0,25.0,16.0,25.0,23.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_107,Tata Busana (TB),79.0,78.0,80.0,83.5,80.125,23.0,20.0,25.0,23.0,30.0,20.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_108,Desain Komunikasi Visual (DKV),77.0,88.0,80.0,89.0,83.5,26.0,23.0,24.0,23.0,22.0,19.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_109,Perhotelan (PH),79.0,88.0,75.0,80.0,80.5,26.0,16.0,18.0,28.0,22.0,24.0,28.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_110,Akuntansi (AKT),77.0,97.0,85.0,88.5,86.875,14.0,28.0,23.0,17.0,20.0,28.0,28.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_111,Rekayasa Perangkat Lunak (RPL),77.0,83.0,85.0,78.0,80.75,22.0,25.0,21.0,21.0,18.0,24.0,25.0,Sains & Teknologi Informasi
+Siswa_112,Desain Komunikasi Visual (DKV),84.0,90.0,88.0,89.5,87.875,32.0,26.0,24.0,22.0,22.0,16.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_113,Rekayasa Perangkat Lunak (RPL),79.0,83.0,85.0,79.0,81.5,32.0,18.0,24.0,19.0,21.0,28.0,18.0,Sains & Teknologi Informasi
+Siswa_114,Desain Komunikasi Visual (DKV),77.0,78.0,88.0,81.5,81.125,23.0,28.0,29.0,20.0,24.0,25.0,29.0,"Seni, Desain & Industri Kreatif"
+Siswa_115,Desain Komunikasi Visual (DKV),76.0,82.0,80.0,79.0,79.25,32.0,27.0,25.0,20.0,19.0,15.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_116,Rekayasa Perangkat Lunak (RPL),82.0,90.0,78.0,88.0,84.5,27.0,29.0,25.0,17.0,22.0,25.0,29.0,Sains & Teknologi Informasi
+Siswa_117,Akuntansi (AKT),77.0,97.0,86.0,86.0,86.5,20.0,28.0,24.0,22.0,28.0,29.0,29.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_118,Rekayasa Perangkat Lunak (RPL),82.0,85.0,88.0,84.0,84.75,26.0,26.0,23.0,23.0,20.0,23.0,26.0,Sains & Teknologi Informasi
+Siswa_119,Desain Komunikasi Visual (DKV),79.0,85.0,88.0,83.5,83.875,27.0,19.0,26.0,23.0,15.0,18.0,26.0,"Seni, Desain & Industri Kreatif"
+Siswa_120,Akuntansi (AKT),77.0,93.0,79.0,84.5,83.375,19.0,27.0,23.0,18.0,24.0,28.0,28.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_121,Perhotelan (PH),80.0,75.0,83.0,82.0,80.0,26.0,23.0,24.0,29.0,28.0,20.0,29.0,Pariwisata & Hospitality
+Siswa_122,Rekayasa Perangkat Lunak (RPL),80.0,88.0,88.0,96.0,88.0,26.0,19.0,23.0,11.0,21.0,25.0,19.0,Sains & Teknologi Informasi
+Siswa_123,Tata Busana (TB),81.0,86.0,87.0,84.0,84.5,25.0,18.0,23.0,21.0,30.0,17.0,23.0,Pariwisata & Hospitality
+Siswa_124,Rekayasa Perangkat Lunak (RPL),85.0,90.0,88.0,96.0,89.75,27.0,30.0,18.0,19.0,22.0,24.0,30.0,Sains & Teknologi Informasi
+Siswa_125,Tata Busana (TB),79.0,90.0,79.0,83.5,82.875,25.0,14.0,28.0,22.0,24.0,22.0,28.0,"Seni, Desain & Industri Kreatif"
+Siswa_126,Tata Busana (TB),81.0,80.0,79.0,83.0,80.75,27.0,16.0,27.0,23.0,24.0,20.0,27.0,"Seni, Desain & Industri Kreatif"
+Siswa_127,Akuntansi (AKT),77.0,85.0,80.0,85.0,81.75,16.0,25.0,23.0,19.0,29.0,29.0,29.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_128,Perhotelan (PH),81.0,86.0,90.0,86.0,85.75,27.0,14.0,21.0,29.0,25.0,24.0,29.0,Pariwisata & Hospitality
+Siswa_129,Desain Komunikasi Visual (DKV),78.0,86.0,78.0,86.0,82.0,28.0,29.0,23.0,20.0,19.0,14.0,23.0,Sains & Teknologi Informasi
+Siswa_130,Rekayasa Perangkat Lunak (RPL),80.0,87.0,79.0,88.0,83.5,27.0,27.0,24.0,19.0,21.0,27.0,27.0,Sains & Teknologi Informasi
+Siswa_131,Akuntansi (AKT),77.0,84.0,79.0,90.0,82.5,18.0,30.0,21.0,27.0,24.0,21.0,21.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_132,Perhotelan (PH),77.0,83.0,88.0,78.0,81.5,27.0,24.0,21.0,23.0,25.0,17.0,23.0,Pariwisata & Hospitality
+Siswa_133,Desain Komunikasi Visual (DKV),78.0,81.0,76.0,77.0,78.0,24.0,26.0,26.0,20.0,18.0,18.0,26.0,"Seni, Desain & Industri Kreatif"
+Siswa_134,Akuntansi (AKT),82.0,92.0,84.0,90.0,87.0,20.0,28.0,18.0,18.0,28.0,26.0,26.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_135,Desain Komunikasi Visual (DKV),78.0,79.0,78.0,79.0,78.5,30.0,26.0,31.0,20.0,20.0,20.0,31.0,"Seni, Desain & Industri Kreatif"
+Siswa_136,Akuntansi (AKT),77.0,84.0,80.0,83.0,81.0,18.0,20.0,23.0,19.0,33.0,26.0,26.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_137,Perhotelan (PH),81.0,81.0,88.0,77.0,81.75,25.0,15.0,20.0,22.0,26.0,24.0,22.0,Pariwisata & Hospitality
+Siswa_138,Desain Komunikasi Visual (DKV),78.0,81.0,77.0,78.0,78.5,27.0,28.0,23.0,19.0,25.0,17.0,23.0,Sains & Teknologi Informasi
+Siswa_139,Perhotelan (PH),80.0,75.0,77.0,79.0,77.75,23.0,17.0,21.0,32.0,28.0,25.0,32.0,Pariwisata & Hospitality
+Siswa_140,Tata Busana (TB),81.0,80.0,79.0,80.0,80.0,23.0,14.0,25.0,25.0,29.0,25.0,25.0,"Seni, Desain & Industri Kreatif"
+Siswa_141,Perhotelan (PH),81.0,81.0,80.0,78.0,80.0,24.0,18.0,20.0,27.0,28.0,22.0,27.0,Pariwisata & Hospitality
+Siswa_142,Rekayasa Perangkat Lunak (RPL),79.0,84.0,80.0,82.0,81.25,29.0,28.0,22.0,18.0,23.0,22.0,28.0,Sains & Teknologi Informasi
+Siswa_143,Rekayasa Perangkat Lunak (RPL),78.0,81.0,76.0,77.0,78.0,30.0,27.0,22.0,19.0,20.0,25.0,27.0,Sains & Teknologi Informasi
+Siswa_144,Desain Komunikasi Visual (DKV),79.0,86.0,78.0,86.0,82.25,29.0,21.0,29.0,20.0,18.0,21.0,29.0,"Seni, Desain & Industri Kreatif"
+Siswa_145,Perhotelan (PH),77.0,78.0,88.0,78.0,80.25,25.0,15.0,18.0,30.0,30.0,22.0,30.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_146,Tata Busana (TB),82.0,80.0,81.0,78.0,80.25,25.0,18.0,22.0,17.0,28.0,24.0,22.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_147,Tata Busana (TB),81.0,80.0,83.0,78.0,80.5,27.0,23.0,28.0,22.0,26.0,23.0,28.0,"Seni, Desain & Industri Kreatif"
+Siswa_148,Perhotelan (PH),77.0,83.0,77.0,77.0,78.5,27.0,19.0,21.0,27.0,24.0,21.0,27.0,Pariwisata & Hospitality
+Siswa_149,Perhotelan (PH),78.0,84.0,80.0,80.0,80.5,31.0,20.0,23.0,31.0,25.0,19.0,31.0,Pariwisata & Hospitality
+Siswa_150,Tata Busana (TB),83.0,80.0,79.0,86.0,82.0,25.0,17.0,27.0,25.0,23.0,22.0,27.0,"Seni, Desain & Industri Kreatif"
+Siswa_151,Rekayasa Perangkat Lunak (RPL),77.0,80.0,78.0,81.0,79.0,28.0,26.0,20.0,16.0,21.0,23.0,26.0,Sains & Teknologi Informasi
+Siswa_152,Rekayasa Perangkat Lunak (RPL),79.0,87.0,77.0,88.0,82.75,25.0,24.0,17.0,19.0,15.0,25.0,24.0,Sains & Teknologi Informasi
+Siswa_153,Tata Busana (TB),81.0,80.0,81.0,84.0,81.5,25.0,17.0,23.0,18.0,27.0,19.0,23.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_154,Tata Busana (TB),83.0,80.0,82.0,80.0,81.25,23.0,18.0,24.0,21.0,28.0,23.0,24.0,"Seni, Desain & Industri Kreatif"
+Siswa_155,Akuntansi (AKT),77.0,86.0,80.0,88.0,82.75,16.0,28.0,18.0,20.0,27.0,23.0,23.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_156,Perhotelan (PH),79.0,80.0,87.0,79.0,81.25,29.0,16.0,24.0,27.0,25.0,22.0,27.0,Pariwisata & Hospitality
+Siswa_157,Perhotelan (PH),75.0,80.0,82.0,79.0,79.0,25.0,17.0,21.0,33.0,27.0,23.0,33.0,Pariwisata & Hospitality
+Siswa_158,Desain Komunikasi Visual (DKV),80.0,87.0,80.0,91.0,84.5,31.0,29.0,27.0,23.0,24.0,19.0,27.0,"Seni, Desain & Industri Kreatif"
+Siswa_159,Akuntansi (AKT),75.0,78.0,75.0,76.0,76.0,16.0,27.0,21.0,18.0,19.0,29.0,29.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_160,Perhotelan (PH),78.0,80.0,80.0,78.0,79.0,24.0,20.0,20.0,27.0,25.0,17.0,27.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_161,Rekayasa Perangkat Lunak (RPL),79.0,86.0,78.0,86.0,82.25,22.0,29.0,20.0,19.0,22.0,25.0,29.0,Sains & Teknologi Informasi
+Siswa_162,Rekayasa Perangkat Lunak (RPL),78.0,89.0,77.0,90.0,83.5,29.0,30.0,22.0,21.0,21.0,30.0,30.0,Sains & Teknologi Informasi
+Siswa_163,Akuntansi (AKT),87.0,87.0,86.0,92.0,88.0,25.0,22.0,21.0,20.0,26.0,20.0,20.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_164,Desain Komunikasi Visual (DKV),78.0,78.0,75.0,79.0,77.5,26.0,31.0,29.0,17.0,22.0,17.0,29.0,"Seni, Desain & Industri Kreatif"
+Siswa_165,Rekayasa Perangkat Lunak (RPL),77.0,80.0,78.0,76.0,77.75,26.0,24.0,17.0,18.0,18.0,25.0,24.0,Sains & Teknologi Informasi
+Siswa_166,Akuntansi (AKT),77.0,83.0,79.0,81.0,80.0,15.0,29.0,20.0,22.0,29.0,24.0,24.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_167,Akuntansi (AKT),77.0,87.0,87.0,89.0,85.0,18.0,27.0,19.0,18.0,31.0,26.0,26.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_168,Akuntansi (AKT),77.0,83.0,80.0,93.0,83.25,20.0,30.0,18.0,20.0,23.0,27.0,27.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_169,Rekayasa Perangkat Lunak (RPL),78.0,83.0,78.0,84.0,80.75,24.0,29.0,18.0,16.0,16.0,23.0,29.0,Sains & Teknologi Informasi
+Siswa_170,Perhotelan (PH),80.0,82.0,80.0,80.0,80.5,24.0,19.0,20.0,27.0,28.0,23.0,27.0,Pariwisata & Hospitality
+Siswa_171,Desain Komunikasi Visual (DKV),78.0,83.0,76.0,90.0,81.75,25.0,28.0,28.0,19.0,21.0,22.0,28.0,"Seni, Desain & Industri Kreatif"
+Siswa_172,Tata Busana (TB),82.0,80.0,79.0,86.0,81.75,26.0,25.0,28.0,17.0,30.0,24.0,28.0,"Seni, Desain & Industri Kreatif"
+Siswa_173,Rekayasa Perangkat Lunak (RPL),78.0,85.0,77.0,89.0,82.25,28.0,24.0,18.0,15.0,20.0,28.0,24.0,Sains & Teknologi Informasi
+Siswa_174,Akuntansi (AKT),76.0,78.0,30.0,81.0,66.25,17.0,26.0,18.0,21.0,28.0,31.0,31.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_175,Akuntansi (AKT),77.0,83.0,79.0,79.0,79.5,19.0,26.0,23.0,23.0,28.0,24.0,24.0,"Ekonomi, Bisnis & Akuntansi"
+Siswa_176,Desain Komunikasi Visual (DKV),82.0,82.0,78.0,82.0,81.0,28.0,28.0,29.0,21.0,25.0,18.0,29.0,"Seni, Desain & Industri Kreatif"
+Siswa_177,Perhotelan (PH),77.0,81.0,85.0,88.0,82.75,26.0,16.0,23.0,25.0,19.0,19.0,25.0,Pariwisata & Hospitality

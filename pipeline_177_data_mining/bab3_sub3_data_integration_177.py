@@ -24,7 +24,11 @@ print(f"[*] Data Kuesioner Bersih Dimuat : {len(df_kuesioner)} baris x {df_kuesi
 print(f"[*] Data Rapor Terseleksi Dimuat : {len(df_rapor)} baris x {df_rapor.shape[1]} kolom")
 
 # 2. Penggabungan Data (Inner Join Berdasarkan Kunci Utama 'NIS')
-df_terintegrasi = pd.merge(df_rapor, df_kuesioner, on='NIS', how='inner')
+df_terintegrasi = pd.merge(df_rapor, df_kuesioner, on='NIS', how='inner', validate='one_to_one')
+if len(df_terintegrasi) != len(df_kuesioner):
+    raise ValueError('Ada NIS kuesioner yang tidak ditemukan dalam leger; integrasi dihentikan.')
+if df_terintegrasi.isna().any().any():
+    raise ValueError('Data terintegrasi memiliki nilai kosong; periksa ekstraksi mapel.')
 
 # 3. Validasi Integritas Hasil Penggabungan
 missing_per_col = df_terintegrasi.isnull().sum()
@@ -32,7 +36,7 @@ total_missing = missing_per_col.sum()
 
 print("\n[*] Hasil Penggabungan (Integration):")
 print(f"    - Dimensi Data Tergabung      : {df_terintegrasi.shape[0]} baris x {df_terintegrasi.shape[1]} kolom")
-print(f"    - Persentase Kesuksesan Match : {len(df_terintegrasi)} / {len(df_kuesioner)} siswa (100.0% Cocok Sempurna)")
+print(f"    - Persentase Kesuksesan Match : {len(df_terintegrasi)} / {len(df_kuesioner)} siswa ({len(df_terintegrasi)/len(df_kuesioner):.2%})")
 print(f"    - Total Missing Value         : {total_missing} nilai kosong")
 
 # 4. Menyimpan File Dataset Terintegrasi Master

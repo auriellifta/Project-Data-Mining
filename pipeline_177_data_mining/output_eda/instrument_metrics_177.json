@@ -1,0 +1,13 @@
+{
+  "n": 177,
+  "r_critical": 0.1475579456159085,
+  "item_rest_flagged": 5,
+  "alpha": {
+    "Realistic": 0.6291009524637093,
+    "Investigative": 0.7331557007734149,
+    "Artistic": 0.3210410195495536,
+    "Social": 0.5975975155505769,
+    "Enterprising": 0.5702924370493254,
+    "Conventional": 0.632872060149323
+  }
+}

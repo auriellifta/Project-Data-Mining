@@ -8,6 +8,8 @@ import os
 import glob
 import pandas as pd
 import numpy as np
+import re
+import unicodedata
 
 print("=" * 80)
 print("SUB-BAB III.2: DATA SELECTION (SELEKSI 4 MAPEL KUNCI DARI 29 LEGER RAPOR)")
@@ -29,6 +31,10 @@ kata_kunci_produktif = [
 ]
 
 semua_rekor_rapor = []
+nama_per_nis = {}
+
+def normalisasi_nama(value):
+    return re.sub(r'[\W_]+', '', unicodedata.normalize('NFKC', str(value)).casefold())
 
 # 3. Iterasi Pembacaan Tiap File Leger Rapor
 for path_f in daftar_leger:
@@ -50,6 +56,10 @@ for path_f in daftar_leger:
             
     if b_header is None or c_nis is None:
         continue
+    kolom_nama = next((c for c in range(len(df_raw.columns))
+                       if 'NAMA' in str(df_raw.iloc[b_header, c]).upper()), None)
+    if kolom_nama is None:
+        raise ValueError('Kolom nama pada leger tidak ditemukan untuk validasi identitas.')
         
     # Menentukan batas akhir kolom mata pelajaran (sebelum kolom presensi/kehadiran)
     c_batas = len(df_raw.columns)
@@ -100,6 +110,7 @@ for path_f in daftar_leger:
         if no_str.isdigit():
             nis_str = str(df_raw.iloc[r, c_nis]).strip().replace('.0', '')
             if nis_str and nis_str != 'nan':
+                nama_per_nis.setdefault(nis_str, set()).add(normalisasi_nama(df_raw.iloc[r, kolom_nama]))
                 v_mat = float(df_raw.iloc[r, col_mat]) if col_mat and pd.notna(df_raw.iloc[r, col_mat]) else np.nan
                 v_bi = float(df_raw.iloc[r, col_bi]) if col_bi and pd.notna(df_raw.iloc[r, col_bi]) else np.nan
                 v_en = float(df_raw.iloc[r, col_en]) if col_en and pd.notna(df_raw.iloc[r, col_en]) else np.nan
@@ -115,8 +126,14 @@ for path_f in daftar_leger:
                     'Produktif': v_prod
                 })
 
-# 4. Agregasi Rata-Rata Multi-Semester per NIS Siswa
+# 4. Agregasi rekaman sumber per NIS (sumber merupakan semester genap 2026).
 df_rapor_agregat = pd.DataFrame(semua_rekor_rapor).groupby('NIS').mean().reset_index()
+questionnaire = pd.read_csv(os.path.join(BASE_DIR, 'temp_kuesioner_clean_177.csv'), dtype={'NIS': str})
+name_mismatches = sum(normalisasi_nama(row.Nama) not in nama_per_nis.get(row.NIS, set())
+                      for row in questionnaire.itertuples())
+if name_mismatches:
+    raise ValueError(f'{name_mismatches} nama/NIS kuesioner tidak cocok dengan leger; periksa sumber privat.')
+print(f'    - Validasi silang nama dan NIS   : {len(questionnaire)}/{len(questionnaire)} cocok')
 
 # 5. Menyimpan Hasil Seleksi Mapel ke File Sementara
 out_path = os.path.join(BASE_DIR, "temp_rapor_selected_177.csv")

@@ -24,6 +24,10 @@ df_clean = pd.DataFrame()
 df_clean['NIS'] = df_raw['NIS'].astype(str).str.replace(r'\.0$', '', regex=True).str.strip()
 df_clean['Nama'] = df_raw['Nama'].astype(str).str.strip()
 df_clean['Jurusan'] = df_raw['Jurusan'].astype(str).str.strip()
+if df_raw[['NIS', 'Nama', 'Jurusan']].isna().any().any():
+    raise ValueError('Identitas kuesioner tidak boleh kosong.')
+if df_clean['NIS'].duplicated().any():
+    raise ValueError('NIS kuesioner harus unik sebelum integrasi.')
 
 # 3. III.1.3 Kuantifikasi Skala Ordinal Likert ke Numerik (1 s/d 5)
 likert_map = {
@@ -46,7 +50,10 @@ dim_cols = {
 
 # Menghitung skor kumulatif (SUM 7 butir per dimensi, skala 7 - 35)
 for dim, cols in dim_cols.items():
-    df_clean[dim] = df_raw.iloc[:, cols].replace(likert_map).astype(float).sum(axis=1)
+    items = df_raw.iloc[:, cols].apply(lambda values: values.map(likert_map))
+    if items.isna().any().any():
+        raise ValueError(f'Jawaban {dim} kosong atau di luar pilihan Likert resmi.')
+    df_clean[dim] = items.sum(axis=1, min_count=7)
 
 # Mengambil kolom rencana kuliah (Kolom 50)
 col_kuliah = 'Jika kuliah, bidang apa yang paling kamu minati?'

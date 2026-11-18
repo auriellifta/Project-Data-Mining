@@ -8,7 +8,7 @@ import os
 import pandas as pd
 
 print("=" * 85)
-print("SUB-BAB III.5: FEATURE ENGINEERING & TRIANGULASI TARGET LABEL")
+print("SUB-BAB III.5: FEATURE ENGINEERING & TARGET PROXY BERBASIS ATURAN")
 print("=" * 85)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -44,9 +44,11 @@ def get_skor_minat_kejuruan(row):
 
 df['Skor_Minat_Kejuruan'] = df.apply(get_skor_minat_kejuruan, axis=1)
 
-# 4. III.5.3 Triangulasi Target Y Rekomendasi Program Studi PT (5 Rumpun SNPMB)
-# Menggabungkan Pilar 1 (Pilihan Siswa), Pilar 2 (RIASEC), dan Pilar 3 (Rapor/Jurusan)
+# 4. III.5.3 Target proxy berbasis aturan untuk lima rumpun studi proyek.
+# Aturan memakai pilihan siswa, jurusan, dan RIASEC. Rapor adalah fitur prediksi,
+# bukan masukan fungsi pelabelan ini. Target belum merupakan validasi BK independen.
 def triangulate_target_prodi(row):
+    """Label proxy untuk prototipe; akurasi RF mengukur reproduksi label aturan."""
     ans = str(row['Pilihan_Kuliah_Mentah']).strip()
     r = row['Realistic']; i = row['Investigative']; a = row['Artistic']
     s = row['Social']; e = row['Enterprising']; c = row['Conventional']
@@ -104,7 +106,7 @@ df.to_csv(out_path, index=False)
 print(f"\n[V] Hasil Sub-Bab III.5 Berhasil Disimpan: {os.path.basename(out_path)}")
 print(f"    - Statistik Sumbu Y (Rata_Rapor)       : Min={df['Rata_Rapor'].min():.2f}, Max={df['Rata_Rapor'].max():.2f}, Mean={df['Rata_Rapor'].mean():.2f}")
 print(f"    - Statistik Sumbu X (Skor_Minat_Kejuruan): Min={df['Skor_Minat_Kejuruan'].min():.2f}, Max={df['Skor_Minat_Kejuruan'].max():.2f}, Mean={df['Skor_Minat_Kejuruan'].mean():.2f}")
-print("\n    - Distribusi Hasil Triangulasi Target Rekomendasi Kuliah (Target Y):")
+print("\n    - Distribusi Target Proxy Rumpun Kuliah (Target Y):")
 for rmp, jml in df['Target_Rumpun_Kuliah'].value_counts().items():
     pct = (jml / len(df)) * 100
     print(f"      * {rmp:<33}: {jml:>2} siswa ({pct:.1f}%)")

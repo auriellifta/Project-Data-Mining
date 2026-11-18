@@ -1,0 +1,12 @@
+# ==============================================================================
+# NALARA CAREER PREDICTION PYTHON API - PRODUCTION DEPENDENCIES
+# Versi scikit-learn/numpy/scipy/joblib dipin persis agar cocok 100% dengan
+# pipeline_177_data_mining/output_model/pipeline_bundle_177.joblib (sklearn 1.9.1).
+# ==============================================================================
+flask==3.1.3
+flask-cors==6.0.2
+gunicorn==23.0.0
+joblib==1.6.0
+numpy==2.5.4
+scipy==1.18.1
+scikit-learn==1.9.1

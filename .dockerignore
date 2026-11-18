@@ -1,0 +1,12 @@
+# ==============================================================================
+# NALARA PYTHON INFERENCE API - STRICT ALLOWLIST .dockerignore
+# Menolak seluruh berkas repositori secara default agar TIDAK ADA data siswa
+# (PII, Excel, CSV, arsip, laporan) yang masuk ke Docker build context maupun image.
+# ==============================================================================
+*
+
+# Hanya izinkan 4 artefak produksi yang dibutuhkan image API
+!requirements-api.txt
+!pipeline_177_data_mining/api_server.py
+!pipeline_177_data_mining/inference_engine.py
+!pipeline_177_data_mining/output_model/pipeline_bundle_177.joblib

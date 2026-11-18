@@ -5,6 +5,9 @@ __pycache__/
 *.pyd
 .pytest_cache/
 
+# Node.js Test Harness Cache
+node_modules/
+
 # Matplotlib & Font Cache
 .mpl_cache/
 .matplotlib/
@@ -17,6 +20,9 @@ ENV/
 
 # Environment Variables & IDE
 .env
+.env.api
+.env.*.local
+!.env.api.example
 .vscode/
 .idea/
 .DS_Store

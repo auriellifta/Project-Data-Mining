@@ -178,7 +178,8 @@ def predict_career():
                     'rumpun_studi': rumpun,
                     'tingkat_keyakinan_pct': hasil['confidence_score_pct'],
                     'sebaran_probabilitas': hasil['probabilitas_per_rumpun'],
-                    'voting_pohon_100': hasil['voting_pohon']
+                    'voting_pohon_100': hasil['voting_pohon'],
+                    'hubungan_jurusan': hasil['hubungan_jurusan']
                 },
                 'profil_minat_akademik': {
                     **hasil['klaster_kmeans'],

@@ -292,6 +292,11 @@ res_json = r_valid.get_json()
 assert res_json['success'] is True
 assert res_json['data']['jurusan_kanonik'] == 'RPL'
 assert 'metadata' in res_json
+assert res_json['metadata']['model_version'] == '1.1.0'
+geometry = res_json['data']['profil_minat_akademik']['grafik_kmeans']
+assert geometry['x'] == 31 and geometry['y'] == 86.5
+assert set(geometry['centroid_0']) == {'x', 'y'}
+assert res_json['data']['rekomendasi_utama']['hubungan_jurusan'] in ('Linier', 'Lintas bidang')
 assert 'sumber_referensi' in res_json['data']['katalog_contoh_prodi']
 print("  [PASS] POST payload valid dengan skor komposit - 200 OK, jurusan kanonik 'RPL', metadata lengkap.")
 

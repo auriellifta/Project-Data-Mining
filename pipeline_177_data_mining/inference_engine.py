@@ -105,6 +105,8 @@ class NalaraInferenceEngine:
         self.rf_model = self.bundle['rf_model']
         self.features_rf = self.bundle['features_rf']
         self.target_classes = list(self.bundle['target_classes'])
+        self.rf_model.n_jobs = 1
+        self.MODEL_METADATA = {**type(self).MODEL_METADATA, **self.bundle.get('metadata', {})}
 
     @classmethod
     def normalize_jurusan(cls, jurusan_raw):
@@ -310,34 +312,39 @@ class NalaraInferenceEngine:
         if total_votes != len(self.rf_model.estimators_):
             raise RuntimeError(f"Total voting pohon ({total_votes}) tidak sama dengan jumlah estimator ({len(self.rf_model.estimators_)}).")
 
-        # 5. Narasi Profil Minat-Akademik Berdasarkan Karakteristik Kelompok Centroid Terukur
-        if klaster_kmeans == 1:
-            profil_klaster = {
-                'kode': 1,
-                'label': 'Klaster 1 (Kecenderungan Minat Kejuruan Tinggi)',
-                'karakteristik_kelompok': (
-                    'Siswa dalam kelompok ini memiliki skor minat kejuruan pada bidang SMK asalnya '
-                    'yang berada di atas rata-rata sampel (Centroid Minat: 28.46, Rapor: 83.39).'
-                ),
-                'catatan_konseling': (
-                    'Orientasi minat kejuruan yang tinggi pada bidang studi saat ini dapat menjadi '
-                    'pertimbangan untuk memprioritaskan program studi yang linier.'
-                )
-            }
-        else:
-            profil_klaster = {
-                'kode': 0,
-                'label': 'Klaster 0 (Kecenderungan Minat Kejuruan Lebih Rendah / Nilai Rapor Kompetitif)',
-                'karakteristik_kelompok': (
-                    'Siswa dalam kelompok ini memiliki skor minat kejuruan pada bidang SMK asalnya '
-                    'yang berada di bawah rata-rata sampel (Centroid Minat: 24.23), dengan rata-rata '
-                    'nilai rapor yang kompetitif (Centroid Rapor: 84.47).'
-                ),
-                'catatan_konseling': (
-                    'Perbedaan antara skor minat pada kejuruan saat ini dan capaian akademik menjadi '
-                    'bahan diskusi bersama Guru BK untuk menelaah kesesuaian arah kelanjutan studi.'
-                )
-            }
+        # 5. Geometri dan label berasal dari objek model yang benar-benar dipakai.
+        canonical_centers = self.kmeans.cluster_centers_[::-1] if self.invert_clusters else self.kmeans.cluster_centers_
+        pos = [self.fitur_numerik_scaler.index('Skor_Minat_Kejuruan'),
+               self.fitur_numerik_scaler.index('Rata_Rapor')]
+        raw_centers = canonical_centers * self.scaler.scale_[pos] + self.scaler.mean_[pos]
+        distances = [float(np.linalg.norm(X_kmeans[0] - center)) for center in canonical_centers]
+        geometry = {
+            'x': float(skor_minat), 'y': float(rata_rapor), 'dimensi_minat': dim_minat,
+            'centroid_0': {'x': float(raw_centers[0, 0]), 'y': float(raw_centers[0, 1])},
+            'centroid_1': {'x': float(raw_centers[1, 0]), 'y': float(raw_centers[1, 1])},
+            'jarak_centroid_0': distances[0], 'jarak_centroid_1': distances[1],
+        }
+        status = 'Sesuai' if klaster_kmeans == 1 else 'Tidak Sesuai'
+        selected_center = raw_centers[klaster_kmeans]
+        profil_klaster = {
+            'kode': klaster_kmeans, 'label': status,
+            'karakteristik_kelompok': (
+                f'Kelompok {status}: centroid minat {selected_center[0]:.2f}, '
+                f'rerata rapor {selected_center[1]:.2f}. '
+                'Keanggotaan ditentukan oleh jarak terdekat dalam ruang Z-score.'
+            ),
+            'catatan_konseling': (
+                'Sesuai/Tidak Sesuai adalah kategori operasional kelompok, bukan aturan dua ambang minimum. '
+                'Gunakan hasil sebagai bahan eksplorasi studi bersama Guru BK.'
+            ),
+            'grafik_kmeans': geometry,
+        }
+        aligned_fields = {
+            'RPL': 'Sains & Teknologi Informasi', 'AKL': 'Ekonomi, Bisnis & Akuntansi',
+            'PH': 'Pariwisata & Hospitality', 'DKV': 'Seni, Desain & Industri Kreatif',
+            'TB': 'Seni, Desain & Industri Kreatif',
+        }
+        hubungan = 'Linier' if aligned_fields[canon_jurusan] == predicted_class else 'Lintas bidang'
 
         return {
             'jurusan_kanonik': canon_jurusan,
@@ -346,6 +353,7 @@ class NalaraInferenceEngine:
             'probabilitas_per_rumpun': proba_dict,
             'voting_pohon': vote_counts,
             'total_pohon': total_votes,
+            'hubungan_jurusan': hubungan,
             'klaster_kmeans': profil_klaster,
             'jarak_euclidean': round(jarak_euclidean_real, 4),
             'skor_riasec_komposit': {k: int(v) for k, v in clean_riasec.items()},

@@ -39,11 +39,11 @@ Salin `.env.api.example` menjadi `.env.api` untuk uji lokal (`.env.api` sudah ma
 ### 3.1 Build Image
 Jalankan dari root repositori Data Mining:
 ```bash
-docker build -t nalara-career-api:1.0.0 .
+docker build -t nalara-career-api:1.1.0 .
 ```
 Verifikasi bahwa build context sangat kecil (`~662 KB`) dan audit isi `/app` hanya memuat 4 file produksi tanpa data siswa:
 ```bash
-docker run --rm --entrypoint sh nalara-career-api:1.0.0 -c "id && find /app -maxdepth 3 -type f | sort"
+docker run --rm --entrypoint sh nalara-career-api:1.1.0 -c "id && find /app -maxdepth 3 -type f | sort"
 ```
 
 ### 3.2 Jalankan Container Lokal
@@ -53,7 +53,7 @@ docker run -d --name nalara-career-api `
   -e PORT=8088 `
   -e NALARA_API_KEY="ganti-dengan-kunci-uji-lokal" `
   -p 127.0.0.1:18088:8088 `
-  nalara-career-api:1.0.0
+  nalara-career-api:1.1.0
 ```
 *(Catatan Windows: hindari memetakan port host `5000` jika masuk rentang port yang dicadangkan Hyper-V/Docker; gunakan port host seperti `18088`.)*
 
@@ -120,3 +120,8 @@ Setelah container ter-deploy pada URL HTTPS (mis. `https://<host-api>/api/v1/pre
    supabase functions deploy predict-career --project-ref <PROJECT-REF> --no-verify-jwt
    ```
 4. Jangan pernah menyimpan `NALARA_API_KEY` di aplikasi Flutter, `.env.api.example`, atau repositori Git.
+
+
+## Revisi model 1.1.0
+
+Bundle memakai scaler dan centroid dari 141 data latih. API mengirim geometri dua klaster dan hubungan rumpun?jurusan. Metrik resource di atas berasal dari pengukuran image 1.0.0. Uji image baru secara lokal dengan `python tools/test_api_docker.py`; belum ada deployment remote dari revisi ini.

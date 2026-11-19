@@ -6,6 +6,7 @@ import json
 import xml.etree.ElementTree as ET
 import pandas as pd
 import numpy as np
+from export_team_revision import selected_report_images
 
 ROOT=Path(__file__).resolve().parents[1]
 PACKAGE=ROOT/'Bahan_Laporan_Akhir_Untuk_Tim_v2'
@@ -15,8 +16,17 @@ BASE=ROOT/'pipeline_177_data_mining'
 def main():
     manifest=json.loads((PACKAGE/'MANIFEST.json').read_text(encoding='utf-8'))
     assert manifest['model_version']=='1.1.0'
+    assert set(manifest['report_images'])==selected_report_images(),'Pilihan gambar ZIP tidak sesuai konfigurasi'
     for name,digest in manifest['sha256'].items():
         assert hashlib.sha256((PACKAGE/name).read_bytes()).hexdigest()==digest,name
+    archive=ROOT/'Bahan_Laporan_Akhir_Untuk_Tim_v2.zip'
+    with ZipFile(archive) as z:
+        assert z.testzip() is None,'ZIP korup'
+        expected={f'{PACKAGE.name}/{name}' for name in manifest['sha256']}
+        expected.add(f'{PACKAGE.name}/MANIFEST.json')
+        assert set(z.namelist())==expected,'Daftar berkas ZIP berbeda dari manifest distribusi'
+        for name in expected:
+            assert z.read(name)==(ROOT/name).read_bytes(),f'ZIP kedaluwarsa: {name}'
     for path in PACKAGE.rglob('*.csv'):
         columns=pd.read_csv(path,nrows=0).columns.str.casefold()
         assert not set(columns).intersection({'nis','nama','nama_siswa','nama siswa'}),path
@@ -37,7 +47,7 @@ def main():
         body=ET.fromstring(z.read('word/document.xml'))
         ns={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
         assert len(body.findall('.//w:tbl',ns))>=4
-    print(f'PASS paket tim: {len(manifest["sha256"])} hash cocok; CSV tanpa Nama/NIS; DOCX valid; nilai mentah dan target tidak berubah.')
+    print(f'PASS paket tim: {len(manifest["sha256"])} hash cocok; ZIP sesuai pilihan gambar; seluruh sumber lokal tetap ada; CSV tanpa Nama/NIS; DOCX valid; nilai mentah dan target tidak berubah.')
 
 
 if __name__=='__main__':main()

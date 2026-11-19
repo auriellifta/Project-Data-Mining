@@ -1,9 +1,0 @@
-| Subbab | Sumber utama |
-| --- | --- |
-| II | step1_data_understanding_177.py; instrument_validation.py |
-| III.1–III.5 | bab3_sub1 ... bab3_sub5 (pembersihan, integrasi, pseudonim, fitur, target proxy) |
-| III.6 | bab3_sub6_data_transformation_177.py → research_pipeline.transform_dataset |
-| IV.1 | bab4_sub1_kmeans_177.py → research_pipeline.fit_kmeans |
-| IV.2 | bab4_sub2_random_forest_177.py → research_pipeline.fit_forest |
-| V | bab5_sub1/bab5_sub2; research_pipeline.evaluate dan fungsi plot |
-| VI | inference_engine.py, api_server.py, app.py, demo_aplikasi_nalara.py |

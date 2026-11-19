@@ -20,7 +20,6 @@ from sklearn.metrics import (accuracy_score, classification_report, confusion_ma
                              davies_bouldin_score, silhouette_samples, silhouette_score)
 from sklearn.model_selection import RepeatedStratifiedKFold, train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.tree import plot_tree
 from threadpoolctl import threadpool_limits
 
 BASE = Path(__file__).resolve().parent
@@ -221,37 +220,16 @@ def evaluate():
 
 def save_figure(fig, name):
     fig.savefig(OUTPUT / name, dpi=300, bbox_inches='tight')
+    with matplotlib.rc_context({'svg.fonttype': 'none'}):
+        fig.savefig((OUTPUT / name).with_suffix('.svg'), bbox_inches='tight')
     plt.close(fig)
 
 
 def plot_kmeans():
+    from research_figures import draw_kmeans
     bundle, df, _ = bundle_and_data()
-    fig, ax = plt.subplots(figsize=(9, 6))
-    colors = {0: '#cf791f', 1: '#21956c'}
-    for code in [0, 1]:
-        part = df[df.Klaster_KMeans == code]
-        ax.scatter(part.Skor_Minat_Kejuruan, part.Rata_Rapor, color=colors[code], alpha=.65,
-                   label=f'{CLUSTER_NAMES[code]} (n={len(part)})', s=35)
-    for c in bundle['metadata']['centroids']:
-        ax.scatter(c['x'], c['y'], marker='X', s=220, color=colors[c['kode']], edgecolor='black',
-                   label=f'Centroid latih C{c["kode"]}: ({c["x"]:.2f}, {c["y"]:.2f})')
-    ax.set(xlim=(7, 35), ylim=(0, 100), xlabel='X: skor minat kejuruan RIASEC (7–35)',
-           ylabel='Y: rata-rata empat pelajaran (0–100)', title='K-Means 2D, K=2 · Model 1.1.0 · fit 141 data latih')
-    ax.legend(fontsize=8, loc='lower left')
-    fig.text(.5, -.02, 'Label operasional kelompok; bukan aturan dua ambang minimum atau diagnosis salah jurusan.', ha='center', fontsize=8)
-    save_figure(fig, 'scatter_kmeans_2d_177.png')
-    sil = silhouette_samples(df[KM_FEATURES], df.Klaster_KMeans)
-    fig, ax = plt.subplots(figsize=(8, 5))
-    lower = 5
-    for code in [0, 1]:
-        values = np.sort(sil[df.Klaster_KMeans == code])
-        ax.fill_betweenx(np.arange(lower, lower + len(values)), 0, values, alpha=.7, color=colors[code],
-                         label=f'C{code}: {CLUSTER_NAMES[code]} (n={len(values)})')
-        lower += len(values) + 8
-    ax.axvline(sil.mean(), color='#b23333', linestyle='--', label=f'Rerata seluruh assignment: {sil.mean():.4f}')
-    ax.set(xlabel='Silhouette', yticks=[], title='Kualitas pengelompokan 177 siswa · centroid dipelajari dari 141 latih')
-    ax.legend(fontsize=8, loc='lower center', bbox_to_anchor=(.5, -.3))
-    save_figure(fig, 'evaluasi_silhouette_kmeans_177.png')
+    review = draw_kmeans(bundle, df, load_preprocessing(), KM_FEATURES, OUTPUT)
+    write_json(OUTPUT / 'figure_kmeans_177.json', review)
 
 
 def plot_forest():
@@ -265,15 +243,26 @@ def plot_forest():
         for j in range(len(classes)):
             ax.text(j, i, str(cm[i, j]), ha='center', va='center', color='white' if cm[i, j] > cm.max()/2 else 'black')
     labels = [SHORT_CLASSES[c] for c in classes]
-    ax.set(xticks=range(len(classes)), yticks=range(len(classes)), xticklabels=labels, yticklabels=labels,
-           xlabel='Prediksi', ylabel='Target proxy berbasis aturan', title=f'RF 100 pohon · akurasi {accuracy:.2%}\nSosial: support uji 0, kinerja belum terukur')
+    xlabels = [label.replace(' & ', ' &\n') for label in labels]
+    ax.set(xticks=range(len(classes)), yticks=range(len(classes)), xticklabels=xlabels, yticklabels=labels,
+           xlabel='Prediksi', ylabel='Target proxy berbasis aturan')
+    fig.suptitle('Evaluasi klasifikasi Random Forest', x=.5, ha='center', y=.98,
+                 fontsize=17, fontweight='bold')
+    fig.text(.5, .925, f'100 pohon · {len(heldout)} siswa uji · akurasi {accuracy:.2%}',
+             ha='center', fontsize=11)
+    fig.subplots_adjust(top=.85, bottom=.20)
+    fig.text(.5, .025, 'Sosial: tidak ada contoh pada data uji; kinerja kelas ini belum terukur.',
+             ha='center', fontsize=9)
     fig.colorbar(im, ax=ax)
     save_figure(fig, 'confusion_matrix_rf_177.png')
     values = pd.Series(rf.feature_importances_, index=RF_FEATURES).sort_values()
     fig, ax = plt.subplots(figsize=(9, 6))
     ax.barh(values.index.str.replace('_scaled', '', regex=False), values.values, color='#326e9b')
     for i, value in enumerate(values): ax.text(value + .002, i, f'{value:.2%}', va='center', fontsize=8)
-    ax.set(xlim=(0, values.max()*1.2), xlabel='Gini importance (bukan pengaruh kausal)', title='Kepentingan prediktif fitur RF')
+    ax.set(xlim=(0, values.max()*1.2), xlabel='Gini importance (bukan pengaruh kausal)')
+    fig.suptitle('Kepentingan prediktif fitur Random Forest', x=.5, ha='center', y=.98,
+                 fontsize=17, fontweight='bold')
+    fig.tight_layout(rect=(0, 0, 1, .90))
     save_figure(fig, 'feature_importance_rf_177.png')
 
 
@@ -292,12 +281,16 @@ def plot_votes():
     table['Prediksi'] = heldout.Prediksi_Random_Forest.to_numpy()
     table.to_csv(OUTPUT / 'rekapitulasi_voting_100_pohon_177.csv', index=False)
     fig, axes = plt.subplots(1, 2, figsize=(15, 10), gridspec_kw={'width_ratios': [2, 1]})
+    fig.suptitle('Voting Random Forest dan distribusi confidence', x=.5, ha='center', y=.98,
+                 fontsize=18, fontweight='bold')
     left = np.zeros(len(x))
     for j, c in enumerate(classes):
         axes[0].barh(range(len(x)), votes[:, j], left=left, label=SHORT_CLASSES[c]); left += votes[:, j]
     axes[0].set(yticks=range(len(x)), yticklabels=heldout.ID_Siswa, xlim=(0, 100),
                 xlabel='Jumlah pohon yang memilih kelas (hard vote)', title='Voting aktual 100 pohon untuk 36 siswa uji')
-    axes[0].tick_params(axis='y', labelsize=7); axes[0].legend(fontsize=8)
+    axes[0].tick_params(axis='y', labelsize=7)
+    axes[0].set_title('Voting aktual 100 pohon untuk 36 siswa uji', loc='center', pad=30)
+    axes[0].legend(fontsize=8, ncol=5, loc='lower center', bbox_to_anchor=(.5, 1.005), frameon=False)
     confidence = heldout['Confidence_Score (%)']
     counts, _, bars = axes[1].hist(confidence, bins=np.arange(0, 101, 10), edgecolor='white', color='#308a80')
     assert int(counts.sum()) == len(heldout)
@@ -305,36 +298,20 @@ def plot_votes():
         if n: axes[1].text(bar.get_x()+5, n+.1, str(int(n)), ha='center')
     axes[1].set(xlim=(0,100), xlabel='Confidence model (%)', ylabel='Jumlah siswa',
                 title=f'Seluruh {len(heldout)} prediksi tercakup\n{int((confidence<50).sum())} confidence <50%')
-    fig.text(.5,.02,'RF scikit-learn mengagregasi probabilitas daun; confidence belum dikalibrasi sebagai peluang keberhasilan kuliah.',ha='center',fontsize=9)
-    fig.tight_layout(rect=(0,.04,1,1)); save_figure(fig, 'hasil_voting_nyata_100_pohon_177.png')
+    fig.tight_layout(rect=(0,0,1,.93)); save_figure(fig, 'hasil_voting_nyata_100_pohon_177.png')
 
 
 def plot_actual_tree():
-    bundle, _, _ = bundle_and_data(); rf = bundle['rf_model']
-    for name, depth in [('struktur_pohon_keputusan_asli_rf_177.png', 3), ('visualisasi_pohon_keputusan_rf_177.png', None)]:
-        fig, ax = plt.subplots(figsize=(24, 11 if depth is not None else 17))
-        plot_tree(rf.estimators_[0], max_depth=depth, feature_names=RF_FEATURES,
-                  class_names=[SHORT_CLASSES[c] for c in rf.classes_], filled=True, rounded=True,
-                  fontsize=7 if depth is not None else 5, ax=ax)
-        ax.set_title(f'Tree #1 aktual · {"cuplikan kedalaman 3" if depth is not None else "pohon penuh"}\n'
-                     'samples: jumlah sampel unik bootstrap; value: jumlah berbobot per kelas')
-        save_figure(fig, name)
+    from research_figures import draw_actual_tree
+    bundle, _, _ = bundle_and_data()
+    draw_actual_tree(bundle, OUTPUT)
 
 
 def plot_architecture():
-    fig, ax = plt.subplots(figsize=(11, 7)); ax.axis('off')
-    boxes = [('42 jawaban (6 skor komposit 7–35) + jurusan + 4 nilai rapor', .90),
-             ('Scaler tersimpan: fit hanya 141 data latih', .73),
-             ('Tahap 1: K-Means K=2 pada X=minat kejuruan dan Y=rerata rapor\nLabel operasional: Sesuai / Tidak Sesuai', .55),
-             ('Tahap 2: RF 100 pohon\n10 fitur Z-score + 1 kode klaster biner', .36),
-             ('Rumpun terprediksi + probabilitas + voting\nHubungan linier/lintas bidang ditentukan dari jurusan dan rumpun hasil', .15)]
-    for text, y in boxes:
-        ax.text(.5,y,text,ha='center',va='center',fontsize=11,
-                bbox={'boxstyle':'round,pad=.7','facecolor':'#eaf2fa','edgecolor':'#39698e'})
-    for (_,a),(_,b) in zip(boxes,boxes[1:]):
-        ax.annotate('',xy=(.5,b+.07),xytext=(.5,a-.06),arrowprops={'arrowstyle':'->','lw':1.5})
-    ax.set_title('Inferensi NALARA · model 1.1.0\nBootstrap dilakukan saat pelatihan RF; inferensi memakai estimator tersimpan')
-    save_figure(fig,'diagram_arsitektur_random_forest.png')
+    from research_figures import draw_forest_architecture
+    bundle, df, _ = bundle_and_data()
+    review = draw_forest_architecture(bundle, df, RF_FEATURES, OUTPUT)
+    write_json(OUTPUT / 'figure_forest_177.json', review)
 
 
 def render_all():

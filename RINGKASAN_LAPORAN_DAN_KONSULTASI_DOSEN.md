@@ -58,7 +58,7 @@ Kedua kelompok berbeda terutama pada minat; centroid Sesuai tidak memiliki rapor
 
 RF memakai 10 fitur Z-score (empat rapor dan enam RIASEC) ditambah satu kode klaster biner. Parameter tetap 100 pohon, Gini, bootstrap, random_state=42. Klaster merupakan fitur tambahan, bukan saklar yang memaksa pilihan program studi. Target adalah lima rumpun proxy proyek; kesesuaiannya dengan kategori resmi seleksi perguruan tinggi tidak diasumsikan.
 
-RF scikit-learn mengagregasi probabilitas daun seluruh pohon. Voting keras ditampilkan sebagai informasi tambahan dan tidak didefinisikan sebagai aturan umum predict_proba. Confidence bukan persentase keberhasilan kuliah dan belum dikalibrasi.
+RF scikit-learn mengagregasi probabilitas daun seluruh pohon. Voting keras ditampilkan sebagai rekap suara tiap pohon. Pada bundle 1.1.0 ini, seluruh daun murni satu kelas; pemeriksaan estimator menunjukkan proporsi suara identik dengan rata-rata probabilitas. Karena itu diagram ensemble dapat menampilkan majority voting dan final class secara konsisten dengan prediksi implementasi. Kesamaan tersebut tidak diasumsikan sebagai sifat umum semua Random Forest. Confidence bukan persentase keberhasilan kuliah dan belum dikalibrasi.
 
 ## BAB V — Evaluasi dan batas hasil
 
@@ -88,7 +88,9 @@ Sosial hanya memiliki dua anggota di seluruh data dan nol contoh pada holdout in
 
 Importance fitur klaster adalah 0.67%, bukan 10,1%. Importance adalah ukuran prediktif relatif, bukan pengaruh kausal. Seluruh angka importance tersedia dalam feature_importance_177.csv.
 
-Histogram mencakup seluruh 36 prediksi, termasuk 8 prediksi confidence <50%. Grafik pohon dibaca langsung dari estimator, dengan samples unik dibedakan dari bobot bootstrap. Gambar kedalaman terbatas diberi label cuplikan.
+Histogram mencakup seluruh 36 prediksi, termasuk 8 prediksi confidence <50%. Grafik pohon dibaca langsung dari estimator dan ditampilkan sebagai simpul lingkaran bernomor dengan aturan aktual. Gambar kedalaman terbatas diberi label cuplikan; node yang belum mencapai daun ditandai sebagai cabang berlanjut. Tabel detail node membedakan jumlah sampel unik dan jumlah berbobot akibat sampling dengan pengembalian saat pelatihan.
+
+Scatter memakai rentang tampilan yang mengikuti data agar titik terbaca, tanpa mengubah koordinat atau mengeluarkan siswa. Rentang instrumen tetap X 7–35 dan Y 0–100. Grafik silhouette menggambarkan 177 assignment; nilai pembanding dari 141 data latih dicantumkan terpisah. Centroid tetap berasal dari pelatihan pada 141 siswa.
 
 ## BAB VI — Implementasi aplikasi dan kesimpulan
 
@@ -114,6 +116,21 @@ Skrip per bab merupakan entry point; rumus dan implementasi bersama berada dalam
 
 ## Lampiran yang digunakan
 
-Gunakan delapan grafik baru di 1_Diagram_dan_Gambar_Laporan, tabel anonim di 2_Tabel_Pengujian_dan_Hasil_Metrik, dan workbook diagnostik item-rest. Versi draf dengan angka 117/60, 91/86, centroid lama, klaim K=2 paling tinggi, atau klaim kontribusi klaster 10,1% tidak menjadi acuan model 1.1.0.
+Gunakan grafik terpilih di 1_Diagram_dan_Gambar_Laporan, tabel anonim di 2_Tabel_Pengujian_dan_Hasil_Metrik, dan workbook diagnostik item-rest. Untuk RF, paket berisi satu diagram ensemble bernomor dan satu gambar pohon aktual. Variasi RF lain dan format gambar cadangan tetap berada di folder lokal, tetapi dikecualikan dari ZIP. Baca PANDUAN_DIAGRAM_REVISI.md untuk pemakaian masing-masing gambar. Versi draf dengan angka 117/60, 91/86, centroid lama, klaim K=2 paling tinggi, atau klaim kontribusi klaster 10,1% tidak menjadi acuan model 1.1.0.
+
+Gambar yang disertakan dalam ZIP ini:
+
+- `confusion_matrix_rf_177.png`
+- `diagram_pohon_lingkaran_rf.png`
+- `eda_1_distribusi_jurusan_177.png`
+- `eda_2_gender_per_jurusan_177.png`
+- `eda_3_sebaran_dimensi_riasec_177.png`
+- `eda_4_heatmap_korelasi_riasec_177.png`
+- `eda_5_rencana_kelulusan_177.png`
+- `evaluasi_silhouette_kmeans_177.png`
+- `feature_importance_rf_177.png`
+- `hasil_voting_nyata_100_pohon_177.png`
+- `scatter_kmeans_2d_177.png`
+- `struktur_pohon_keputusan_asli_rf_177.png`
 
 Referensi metode implementasi: https://scikit-learn.org/stable/common_pitfalls.html#data-leakage ; https://scikit-learn.org/stable/modules/clustering.html#k-means ; https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html .

@@ -1,5 +1,0 @@
-Repo: https://github.com/auriellifta/Project-Data-Mining
-Versi lokal revisi: 1.1.0; status publikasi mengikuti commit aktual.
-Demo: streamlit run app.py
-API: python pipeline_177_data_mining/api_server.py
-Reproduksi: python tools/run_research_revision.py

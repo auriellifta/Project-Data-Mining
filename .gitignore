@@ -64,5 +64,15 @@ SYSTEM_INSTRUCTIONS.md
 pipeline_177_data_mining/dataset_terintegrasi_177.csv
 integration_artifacts/
 Bahan_Laporan_Akhir_Untuk_Tim/
-!Bahan_Laporan_Akhir_Untuk_Tim_v2/3_Panduan_Narasi_dan_Angka_Resmi_Laporan/ringkasan project datmin_revisi_v2.docx
+Bahan_Laporan_Akhir_Untuk_Tim_v2/
 archive/
+
+# Variasi gambar dan metadata pemeriksaan hanya untuk arsip lokal.
+pipeline_177_data_mining/output_model/*.svg
+pipeline_177_data_mining/output_model/*.jpg
+pipeline_177_data_mining/output_model/diagram_alur_hybrid_177.png
+pipeline_177_data_mining/output_model/diagram_arsitektur_random_forest.png
+pipeline_177_data_mining/output_model/diagram_pohon_final_rf.png
+pipeline_177_data_mining/output_model/visualisasi_pohon_keputusan_rf_177.png
+pipeline_177_data_mining/output_model/figure_*.json
+pipeline_177_data_mining/output_model/detail_node_tree_1_177.csv

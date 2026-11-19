@@ -10,6 +10,24 @@ ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT/'pipeline_177_data_mining'
 OUT=BASE/'output_model'
 PACKAGE=ROOT/'Bahan_Laporan_Akhir_Untuk_Tim_v2'
+IMAGE_SELECTION=ROOT/'tools/report_image_selection.json'
+
+
+def selected_report_images():
+    """Pilih gambar ZIP tanpa menghapus satu pun gambar dari folder lokal."""
+    selection=json.loads(IMAGE_SELECTION.read_text(encoding='utf-8'))
+    rf_images=selection['rf_diagrams']
+    if (len(rf_images)!=2 or rf_images[0]!='diagram_pohon_lingkaran_rf.png'
+            or rf_images[1] not in {'struktur_pohon_keputusan_asli_rf_177.png',
+                                    'visualisasi_pohon_keputusan_rf_177.png'}):
+        raise ValueError('Pilih satu diagram ensemble dan satu gambar pohon aktual.')
+    images=set(rf_images)
+    if selection['include_eda_and_evaluation']:
+        images.update(['scatter_kmeans_2d_177.png','evaluasi_silhouette_kmeans_177.png',
+                       'confusion_matrix_rf_177.png','feature_importance_rf_177.png',
+                       'hasil_voting_nyata_100_pohon_177.png'])
+        images.update(p.name for p in (BASE/'output_eda').glob('eda_*.png'))
+    return images
 
 
 def table(headers,rows):
@@ -61,6 +79,8 @@ def write_docx(path,text):
 
 
 def export():
+    report_images=selected_report_images()
+    report_image_list='\n'.join(f'- `{name}`' for name in sorted(report_images))
     m=json.loads((OUT/'metrics_177.json').read_text(encoding='utf-8'))
     instrument=json.loads((BASE/'output_eda/instrument_metrics_177.json').read_text(encoding='utf-8'))
     km=m['kmeans']; centers=km['centroids']; c0,c1=centers
@@ -130,7 +150,7 @@ Kedua kelompok berbeda terutama pada minat; centroid Sesuai tidak memiliki rapor
 
 RF memakai 10 fitur Z-score (empat rapor dan enam RIASEC) ditambah satu kode klaster biner. Parameter tetap 100 pohon, Gini, bootstrap, random_state=42. Klaster merupakan fitur tambahan, bukan saklar yang memaksa pilihan program studi. Target adalah lima rumpun proxy proyek; kesesuaiannya dengan kategori resmi seleksi perguruan tinggi tidak diasumsikan.
 
-RF scikit-learn mengagregasi probabilitas daun seluruh pohon. Voting keras ditampilkan sebagai informasi tambahan dan tidak didefinisikan sebagai aturan umum predict_proba. Confidence bukan persentase keberhasilan kuliah dan belum dikalibrasi.
+RF scikit-learn mengagregasi probabilitas daun seluruh pohon. Voting keras ditampilkan sebagai rekap suara tiap pohon. Pada bundle 1.1.0 ini, seluruh daun murni satu kelas; pemeriksaan estimator menunjukkan proporsi suara identik dengan rata-rata probabilitas. Karena itu diagram ensemble dapat menampilkan majority voting dan final class secara konsisten dengan prediksi implementasi. Kesamaan tersebut tidak diasumsikan sebagai sifat umum semua Random Forest. Confidence bukan persentase keberhasilan kuliah dan belum dikalibrasi.
 
 ## BAB V — Evaluasi dan batas hasil
 
@@ -153,7 +173,9 @@ Sosial hanya memiliki dua anggota di seluruh data dan nol contoh pada holdout in
 
 Importance fitur klaster adalah {m['feature_importance']['Klaster_KMeans']:.2%}, bukan 10,1%. Importance adalah ukuran prediktif relatif, bukan pengaruh kausal. Seluruh angka importance tersedia dalam feature_importance_177.csv.
 
-Histogram mencakup seluruh {m['test_rows']} prediksi, termasuk {m['confidence_below_50']} prediksi confidence <50%. Grafik pohon dibaca langsung dari estimator, dengan samples unik dibedakan dari bobot bootstrap. Gambar kedalaman terbatas diberi label cuplikan.
+Histogram mencakup seluruh {m['test_rows']} prediksi, termasuk {m['confidence_below_50']} prediksi confidence <50%. Grafik pohon dibaca langsung dari estimator dan ditampilkan sebagai simpul lingkaran bernomor dengan aturan aktual. Gambar kedalaman terbatas diberi label cuplikan; node yang belum mencapai daun ditandai sebagai cabang berlanjut. Tabel detail node membedakan jumlah sampel unik dan jumlah berbobot akibat sampling dengan pengembalian saat pelatihan.
+
+Scatter memakai rentang tampilan yang mengikuti data agar titik terbaca, tanpa mengubah koordinat atau mengeluarkan siswa. Rentang instrumen tetap X 7–35 dan Y 0–100. Grafik silhouette menggambarkan 177 assignment; nilai pembanding dari 141 data latih dicantumkan terpisah. Centroid tetap berasal dari pelatihan pada 141 siswa.
 
 ## BAB VI — Implementasi aplikasi dan kesimpulan
 
@@ -171,7 +193,11 @@ Skrip per bab merupakan entry point; rumus dan implementasi bersama berada dalam
 
 ## Lampiran yang digunakan
 
-Gunakan delapan grafik baru di 1_Diagram_dan_Gambar_Laporan, tabel anonim di 2_Tabel_Pengujian_dan_Hasil_Metrik, dan workbook diagnostik item-rest. Versi draf dengan angka 117/60, 91/86, centroid lama, klaim K=2 paling tinggi, atau klaim kontribusi klaster 10,1% tidak menjadi acuan model 1.1.0.
+Gunakan grafik terpilih di 1_Diagram_dan_Gambar_Laporan, tabel anonim di 2_Tabel_Pengujian_dan_Hasil_Metrik, dan workbook diagnostik item-rest. Untuk RF, paket berisi satu diagram ensemble bernomor dan satu gambar pohon aktual. Variasi RF lain dan format gambar cadangan tetap berada di folder lokal, tetapi dikecualikan dari ZIP. Baca PANDUAN_DIAGRAM_REVISI.md untuk pemakaian masing-masing gambar. Versi draf dengan angka 117/60, 91/86, centroid lama, klaim K=2 paling tinggi, atau klaim kontribusi klaster 10,1% tidak menjadi acuan model 1.1.0.
+
+Gambar yang disertakan dalam ZIP ini:
+
+{report_image_list}
 
 Referensi metode implementasi: https://scikit-learn.org/stable/common_pitfalls.html#data-leakage ; https://scikit-learn.org/stable/modules/clustering.html#k-means ; https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html .
 '''
@@ -182,12 +208,20 @@ Referensi metode implementasi: https://scikit-learn.org/stable/common_pitfalls.h
         shutil.copy2(ROOT/name,PACKAGE/folders[0]/name)
     images=['scatter_kmeans_2d_177.png','evaluasi_silhouette_kmeans_177.png','confusion_matrix_rf_177.png',
             'feature_importance_rf_177.png','hasil_voting_nyata_100_pohon_177.png',
-            'struktur_pohon_keputusan_asli_rf_177.png','visualisasi_pohon_keputusan_rf_177.png','diagram_arsitektur_random_forest.png']
+            'struktur_pohon_keputusan_asli_rf_177.png','visualisasi_pohon_keputusan_rf_177.png','diagram_arsitektur_random_forest.png',
+            'diagram_alur_hybrid_177.png','diagram_pohon_lingkaran_rf.png','diagram_pohon_final_rf.png']
     for name in images:shutil.copy2(OUT/name,PACKAGE/folders[1]/name)
+    for name in images:
+        vector=OUT/Path(name).with_suffix('.svg')
+        if vector.exists():shutil.copy2(vector,PACKAGE/folders[1]/vector.name)
+    for name in ['diagram_pohon_lingkaran_rf.jpg','diagram_pohon_final_rf.jpg']:
+        shutil.copy2(OUT/name,PACKAGE/folders[1]/name)
+    shutil.copy2(ROOT/'docs/PANDUAN_DIAGRAM_REVISI.md',PACKAGE/folders[3]/'PANDUAN_DIAGRAM_REVISI.md')
     for p in (BASE/'output_eda').glob('eda_*.png'):shutil.copy2(p,PACKAGE/folders[1]/p.name)
     for name in ['dataset_anonim_177.csv','dataset_engineered_177.csv','dataset_siap_model_177.csv','dataset_terklaster_177.csv','hasil_prediksi_rf_177.csv']:
         shutil.copy2(BASE/name,PACKAGE/folders[2]/name)
-    for name in ['metrics_177.json','feature_importance_177.csv','rekapitulasi_voting_100_pohon_177.csv','split_177.json']:
+    for name in ['metrics_177.json','feature_importance_177.csv','rekapitulasi_voting_100_pohon_177.csv','split_177.json',
+                 'detail_node_tree_1_177.csv','figure_kmeans_177.json','figure_forest_177.json']:
         shutil.copy2(OUT/name,PACKAGE/folders[2]/name)
     for name in ['diagnostik_item_177.csv','reliabilitas_177.csv','tabel_korelasi_rapor_riasec.csv','Hasil_Uji_Validitas_dan_Reliabilitas_Instrumen_RIASEC.xlsx']:
         shutil.copy2(BASE/'output_eda'/name,PACKAGE/folders[2]/name)
@@ -204,12 +238,20 @@ Gunakan paket v2 ini untuk naskah akhir. Dokumen Word asli tidak ditimpa.
 - Ganti Bab IV: Sesuai {km['cluster_counts']['1']}, Tidak Sesuai {km['cluster_counts']['0']}; centroid latih X/Y C0=({c0['x']:.4f},{c0['y']:.4f}), C1=({c1['x']:.4f},{c1['y']:.4f}).
 - Ganti Bab V: inertia latih {km['inertia_train']:.6f}; silhouette latih {km['silhouette_train']:.6f}; silhouette 177 assignment {km['silhouette_all_assigned']:.6f}; akurasi tetap {m['test_accuracy']:.2%}, support Sosial=0.
 - Ganti seluruh grafik pohon, voting, scatter, silhouette, confusion matrix, importance, dan arsitektur dengan berkas v2.
+- Pembaruan visual: simpul pohon berbentuk lingkaran, ensemble majority voting/final class, scatter diperbesar mengikuti data, serta keterangan evaluasi dipisahkan dari judul. Baca PANDUAN_DIAGRAM_REVISI.md; angka model tidak berubah.
+- ZIP hanya memuat gambar pilihan sesuai daftar di bawah. Variasi lain tetap ada secara lokal dan tidak perlu disalin ke laporan.
 - Perbarui batas instrumen: alpha Artistic rendah, {instrument['item_rest_flagged']} butir perlu telaah item-rest; hapus klaim otomatis 100% valid.
 - Selaraskan kesimpulan: prototipe pendukung konseling; manfaat nyata dan kecocokan jurusan belum divalidasi independen.
 - Perbarui screenshot aplikasi setelah bundle 1.1.0 dan UI hasil dua tahap digunakan.
 - Naskah yang sudah disalin tim perlu diperbarui manual sesuai daftar ini. Paket tidak mengubah salinan milik teman.
 
 File identitas NIS/Nama tidak disertakan. Semua berkas kode di folder 0 adalah salinan untuk kutipan; jalankan program dari struktur repo utuh.
+
+## Gambar dalam ZIP
+
+{report_image_list}
+
+Folder lokal menyimpan arsip gambar lengkap. Manifest dan ZIP menyaring gambar sesuai tools/report_image_selection.json; berkas yang dikecualikan tidak dihapus dari disk.
 '''
     (PACKAGE/'MULAI_DI_SINI.md').write_text(notes,encoding='utf-8')
     (guide/'DAFTAR_PERUBAHAN_UNTUK_TIM.md').write_text(notes,encoding='utf-8')
@@ -249,9 +291,24 @@ Diagnostik instrumen menyediakan item-rest dan alpha; {instrument['item_rest_fla
     (ROOT/'README.md').write_text(readme,encoding='utf-8')
     old=ROOT/'Bahan_Laporan_Akhir_Untuk_Tim'
     if old.exists():(old/'PAKET_LAMA_GUNAKAN_REVISI_V2.txt').write_text('Paket ini merupakan arsip sebelum koreksi metodologi. Gunakan ../Bahan_Laporan_Akhir_Untuk_Tim_v2/MULAI_DI_SINI.md dan naskah revisi v2.\n',encoding='utf-8')
-    hashes={p.relative_to(PACKAGE).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in PACKAGE.rglob('*') if p.is_file() and p.name!='MANIFEST.json'}
-    (PACKAGE/'MANIFEST.json').write_text(json.dumps({'model_version':m['model_version'],'sha256':hashes},indent=2),encoding='utf-8')
+    local_files=[p for p in PACKAGE.rglob('*') if p.is_file() and p.name!='MANIFEST.json']
+    image_extensions={'.png','.jpg','.jpeg','.svg','.pdf'}
+    delivered=[p for p in local_files if p.suffix.lower() not in image_extensions
+               or (p.parent==PACKAGE/folders[1] and p.name in report_images)]
+    delivered_images={p.name for p in delivered if p.parent==PACKAGE/folders[1]}
+    if delivered_images!=report_images:
+        raise ValueError(f'Gambar pilihan belum tersedia: {report_images-delivered_images}')
+    hashes={p.relative_to(PACKAGE).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in delivered}
+    (PACKAGE/'MANIFEST.json').write_text(json.dumps({'model_version':m['model_version'],
+        'report_images':sorted(report_images),'sha256':hashes},indent=2),encoding='utf-8')
+    archive=ROOT/'Bahan_Laporan_Akhir_Untuk_Tim_v2.zip'
+    temporary=archive.with_suffix('.zip.tmp')
+    with ZipFile(temporary,'w',ZIP_DEFLATED) as z:
+        for path in sorted(delivered+[PACKAGE/'MANIFEST.json']):
+            z.write(path,path.relative_to(ROOT).as_posix())
+    temporary.replace(archive)
     print('Paket tim diperbarui:',PACKAGE)
+    print('ZIP paket tim diperbarui:',archive)
 
 
 if __name__=='__main__':export()
